@@ -1,16 +1,22 @@
 import numpy as np
+import actFuncs as act
 
 X = [[1,2,3], [2.1,0.5, -0.4], [0.2, 2, -0.5]]
 
-class denseLayer:
-    weights = []
+class DenseLayer:
     def __init__(self, numIn, numNeu):
-
         self.weights = 0.10 * np.random.randn(numIn, numNeu)
-        self.biases = np.zeros(numIn, numNeu)
+        self.biases = np.zeros((numIn, numNeu))
 
     def forward(self, inputs):
         self.output = np.dot(inputs , self.weights) + self.biases
+
+
+layer = DenseLayer(3, 5)
+layer.forward(X)
+output = act.ActivationReLu.forward(layer.output)
+print (layer.output)
+print(output)
 
 
 
